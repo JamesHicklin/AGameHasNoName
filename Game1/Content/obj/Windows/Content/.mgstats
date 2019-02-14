@@ -1,0 +1,6 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/ElDuderino/source/repos/Game1/Game1/Content/arial.spritefont","C:/Users/ElDuderino/source/repos/Game1/Game1/Content/bin/Windows/Content/arial.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21521,1.003416
+"C:/Users/ElDuderino/source/repos/Game1/Game1/Content/ball.png","C:/Users/ElDuderino/source/repos/Game1/Game1/Content/bin/Windows/Content/ball.xnb","TextureProcessor","Texture2DContent",8368,16469,1.048621
+"C:/Users/ElDuderino/source/repos/Game1/Game1/Content/Floor01.png","C:/Users/ElDuderino/source/repos/Game1/Game1/Content/bin/Windows/Content/Floor01.xnb","TextureProcessor","Texture2DContent",228,4181,1.160047
+"C:/Users/ElDuderino/source/repos/Game1/Game1/Content/test.png","C:/Users/ElDuderino/source/repos/Game1/Game1/Content/bin/Windows/Content/test.xnb","TextureProcessor","Texture2DContent",511,4181,0.3286536
+"C:/Users/ElDuderino/source/repos/Game1/Game1/Content/wall01.png","C:/Users/ElDuderino/source/repos/Game1/Game1/Content/bin/Windows/Content/wall01.xnb","TextureProcessor","Texture2DContent",168,4181,0.0179525
