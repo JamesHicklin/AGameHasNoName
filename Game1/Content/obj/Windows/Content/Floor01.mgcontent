@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/ElDuderino/source/repos/Game1/Game1/Content/Floor01.png</SourceFile>
+  <SourceFile>C:/Users/ElDuderino/source/repos/AGameHasNoName/Game1/Content/Floor01.png</SourceFile>
   <SourceTime>2018-12-24T19:47:07.2708037-07:00</SourceTime>
-  <DestFile>C:/Users/ElDuderino/source/repos/Game1/Game1/Content/bin/Windows/Content/Floor01.xnb</DestFile>
-  <DestTime>2018-12-24T20:04:56.0743031-07:00</DestTime>
+  <DestFile>C:/Users/ElDuderino/source/repos/AGameHasNoName/Game1/Content/bin/Windows/Content/Floor01.xnb</DestFile>
+  <DestTime>2019-02-13T22:34:40.9401834-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T09:35:54-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

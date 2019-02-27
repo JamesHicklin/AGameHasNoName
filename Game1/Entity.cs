@@ -73,7 +73,7 @@ namespace Game1
             return _dimensions;
         }
 
-        public EntityType GetType()
+        public EntityType GetEntityType()
         {
             return _entityType;
         }

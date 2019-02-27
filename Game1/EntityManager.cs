@@ -37,7 +37,7 @@ namespace Game1
         {
             foreach (KeyValuePair<int, Entity> entity in _entities)
             {
-                if (entity.Value.GetType() == Entity.EntityType.PLAYER) continue;
+                if (entity.Value.GetEntityType() == Entity.EntityType.PLAYER) continue;
 
                 Vector2 position = entity.Value.GetPosition();
                 Vector2 bounds = entity.Value.GetDimensions();

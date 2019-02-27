@@ -4,11 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/ElDuderino/source/repos/Game1/Game1/Content/arial.spritefont</File>
-    <File>C:/Users/ElDuderino/source/repos/Game1/Game1/Content/ball.png</File>
-    <File>C:/Users/ElDuderino/source/repos/Game1/Game1/Content/Floor01.png</File>
-    <File>C:/Users/ElDuderino/source/repos/Game1/Game1/Content/test.png</File>
-    <File>C:/Users/ElDuderino/source/repos/Game1/Game1/Content/wall01.png</File>
+    <File>C:/Users/ElDuderino/source/repos/AGameHasNoName/Game1/Content/arial.spritefont</File>
+    <File>C:/Users/ElDuderino/source/repos/AGameHasNoName/Game1/Content/ball.png</File>
+    <File>C:/Users/ElDuderino/source/repos/AGameHasNoName/Game1/Content/Floor01.png</File>
+    <File>C:/Users/ElDuderino/source/repos/AGameHasNoName/Game1/Content/test.png</File>
+    <File>C:/Users/ElDuderino/source/repos/AGameHasNoName/Game1/Content/wall01.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

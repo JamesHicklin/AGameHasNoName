@@ -123,7 +123,7 @@ namespace Game1
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            //Content.Unload()
         }
         
         /// <summary>
@@ -141,7 +141,7 @@ namespace Game1
 
             Entity player = _entityManager.Get(0);
 
-            player.SetVelocity(200 * (float)gameTime.ElapsedGameTime.TotalSeconds);
+            player.SetVelocity(400 * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
             if (kstate.IsKeyDown(Keys.Escape))
                 this.Exit();
@@ -249,58 +249,48 @@ namespace Game1
 
             if (_nextMoveState != Entity.MoveState.IDLE)
             {
+                // If stopped at a wall, or the player pressed to go in the opposite direction
                 if (player.GetMoveState() == Entity.MoveState.IDLE || turnAround)
                 {
                     player.SetMoveState(_nextMoveState);
                     _targetPosition.X = 0;
                     _targetPosition.Y = 0;
-                    //_nextMoveState = Entity.MoveState.IDLE;
                 }
-                //else if (CheckNextMove(player, _targetPosition))
-                //{
-                //    _targetPosition.X = 0;
-                //    _targetPosition.Y = 0;
-                //    CorrectPosition(player, player.GetMoveState());
-                //    player.SetMoveState(_nextMoveState);
-                //    _nextMoveState = Entity.MoveState.IDLE;
-                //}
-                //else
-                //{
                 else if (directionChanged)
+                {
+                    Vector2 nextFreeSpace = DetermineNextMove(player, _nextMoveState);
+                    if (nextFreeSpace.X != 0 && nextFreeSpace.Y != 0)
                     {
-                        //directionChanged = false;
-
-                        Vector2 nextFreeSpace = DetermineNextMove(player, _nextMoveState);
-                        if (nextFreeSpace.X != 0 && nextFreeSpace.Y != 0)
-                        {
-                            _targetPosition = nextFreeSpace;
-                        }
-                        else
-                        {
-                            _nextMoveState = Entity.MoveState.IDLE;
-                            _targetPosition.X = 0;
-                            _targetPosition.Y = 0;
-                        }
+                        //Player pressed to go in a direction that is currently blocked
+                        _targetPosition = nextFreeSpace;
                     }
-
-                    player.Update();
-
-                    if (_targetPosition.X != 0 && CheckNextMove(player, _targetPosition))
+                    else
                     {
+                        _nextMoveState = Entity.MoveState.IDLE;
                         _targetPosition.X = 0;
                         _targetPosition.Y = 0;
-                        CorrectPosition(player, player.GetMoveState());
-                        player.SetMoveState(_nextMoveState);
-                        _nextMoveState = Entity.MoveState.IDLE;
                     }
+                }
 
-                    Entity entity = DetermineCollision(player, player.GetMoveState());
-                    if (entity != null)
-                    {
-                        CorrectPosition(player, player.GetMoveState());
-                        player.SetMoveState(Entity.MoveState.IDLE);
-                    }
-                //}
+                player.Update();
+
+                //Entity has reached target position, reset 
+                if (_targetPosition.X != 0 && CheckNextMove(player, _targetPosition))
+                {
+                    _targetPosition.X = 0;
+                    _targetPosition.Y = 0;
+                    CorrectPosition(player, player.GetMoveState());
+                    player.SetMoveState(_nextMoveState);
+                    _nextMoveState = Entity.MoveState.IDLE;
+                }
+
+                Entity entity = DetermineCollision(player, player.GetMoveState());
+                if (entity != null)
+                {
+                    //Entity has collided with something
+                    CorrectPosition(player, player.GetMoveState());
+                    player.SetMoveState(Entity.MoveState.IDLE);
+                }
             }
             else if (player.GetMoveState() != Entity.MoveState.IDLE)
             {
@@ -391,7 +381,7 @@ namespace Game1
             targetEntity = _entityManager.Get(entityPosX, entityPosY);
             if (targetEntity != null)
             {
-                if (targetEntity.GetType() != Entity.EntityType.FLOOR)
+                if (targetEntity.GetEntityType() != Entity.EntityType.FLOOR)
                 {
                     targetEntity.SetMoveState(currentDirection);
                     return DetermineNextMove(targetEntity, currentDirection);
@@ -411,48 +401,48 @@ namespace Game1
             {
                 case Entity.MoveState.MOVING_DOWN:
                     targetEntity = _entityManager.Get(position.X, position.Y + 31);
-                    if (targetEntity != null && targetEntity.GetType() != Entity.EntityType.FLOOR)
+                    if (targetEntity != null && targetEntity.GetEntityType() != Entity.EntityType.FLOOR)
                     {
                         return targetEntity;
                     }
                     targetEntity = _entityManager.Get(position.X + 31, position.Y + 31);
-                    if (targetEntity != null && targetEntity.GetType() != Entity.EntityType.FLOOR)
+                    if (targetEntity != null && targetEntity.GetEntityType() != Entity.EntityType.FLOOR)
                     {
                         return targetEntity;
                     }
                     break;
                 case Entity.MoveState.MOVING_LEFT:
                     targetEntity = _entityManager.Get(position.X, position.Y);
-                    if (targetEntity != null && targetEntity.GetType() != Entity.EntityType.FLOOR)
+                    if (targetEntity != null && targetEntity.GetEntityType() != Entity.EntityType.FLOOR)
                     {
                         return targetEntity;
                     }
                     targetEntity = _entityManager.Get(position.X, position.Y + 31);
-                    if (targetEntity != null && targetEntity.GetType() != Entity.EntityType.FLOOR)
+                    if (targetEntity != null && targetEntity.GetEntityType() != Entity.EntityType.FLOOR)
                     {
                         return targetEntity;
                     }
                     break;
                 case Entity.MoveState.MOVING_RIGHT:
                     targetEntity = _entityManager.Get(position.X + 31, position.Y);
-                    if (targetEntity != null && targetEntity.GetType() != Entity.EntityType.FLOOR)
+                    if (targetEntity != null && targetEntity.GetEntityType() != Entity.EntityType.FLOOR)
                     {
                         return targetEntity;
                     }
                     targetEntity = _entityManager.Get(position.X + 31, position.Y + 31);
-                    if (targetEntity != null && targetEntity.GetType() != Entity.EntityType.FLOOR)
+                    if (targetEntity != null && targetEntity.GetEntityType() != Entity.EntityType.FLOOR)
                     {
                         return targetEntity;
                     }
                     break;
                 case Entity.MoveState.MOVING_UP:
                     targetEntity = _entityManager.Get(position.X, position.Y);
-                    if (targetEntity != null && targetEntity.GetType() != Entity.EntityType.FLOOR)
+                    if (targetEntity != null && targetEntity.GetEntityType() != Entity.EntityType.FLOOR)
                     {
                         return targetEntity;
                     }
                     targetEntity = _entityManager.Get(position.X + 31, position.Y);
-                    if (targetEntity != null && targetEntity.GetType() != Entity.EntityType.FLOOR)
+                    if (targetEntity != null && targetEntity.GetEntityType() != Entity.EntityType.FLOOR)
                     {
                         return targetEntity;
                     }

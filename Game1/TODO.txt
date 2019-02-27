@@ -1,0 +1,5 @@
+﻿Unload content
+File serilization
+Move more code to classes
+Possible ECS system
+GUI
